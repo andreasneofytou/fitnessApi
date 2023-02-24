@@ -12,7 +12,7 @@ public class Repository<TEntity>
     {
         this.mongoClient = mongoClient;
         var database = mongoClient.GetDatabase(DATABASE_NAME);
-        this.collection = database.GetCollection<TEntity>(typeof(TEntity).FullName.Split('.').Last().ToLower());
+        this.collection = database.GetCollection<TEntity>(typeof(TEntity).FullName?.Split('.').Last().ToLower());
     }
 
     public async Task<TEntity> InsertAsync(TEntity entity)
